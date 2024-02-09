@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showMainView = false // TODO: Change this to true when dev is completed
+    
     var body: some View {
-        VStack {
-            Image("main_logo_min")
-                .resizable()
-                .scaledToFit()
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-            Text("Streak")
+        ZStack {
+            if showMainView {
+                Text("This is Main View")
+            } else {
+                SplashView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation {
+                                showMainView = true
+                            }
+                        }
+                    }
+            }
         }
-        .padding()
     }
 }
 
