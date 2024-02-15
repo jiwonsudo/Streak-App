@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var hasSplashShown = true  // TODO: Change this to false when dev is completed
+    @State private var hasSplashShown = false  // TODO: Change this to false when dev is completed
     @State private var isLoggedIn = false
     
     var body: some View {
         ZStack {
             if hasSplashShown {
-                Text("This is Main View")
+                if isLoggedIn {
+                    Text("View if Logged In")
+                } else {
+                    LandingPageView()
+                }
             } else {
                 SplashView()
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {  // Show Splash Screen for 0.5 seconds
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {  // Show Splash Screen for 0.5 seconds
                             withAnimation {
                                 hasSplashShown = true
                             }
