@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var hasSplashShown = true // TODO: Change this to false when dev is completed
+    @State private var hasSplashShown = true  // TODO: Change this to false when dev is completed
     @State private var isLoggedIn = false
     
     var body: some View {
